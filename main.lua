@@ -24,6 +24,8 @@ function Game:init()
 
     ob.bg = love.graphics.newImage("assets/bg.jpg")
 
+    ob.ground = love.graphics.newImage("assets/ground.png")
+
     font = love.graphics.newFont("assets/font.ttf", 30)
     love.graphics.setFont(font)
 
@@ -41,7 +43,7 @@ function Game:_load()
     self.blocks = {}
 
     for _, ob in ipairs(self.level.blocks) do
-        block = Block:init(ob.x, ob.y, ob.w, ob.h)
+        block = Block:init(ob.x, ob.y)
         table.insert(self.blocks, block)
     end
 
@@ -57,14 +59,19 @@ function Game:draw()
     self.player:draw()
 
 
-    love.graphics.setColor(0, 0, 0)
+    for i = 0, 33 do
+        love.graphics.draw(self.ground, i * 31, 200 + 32)
+    end
 
-    love.graphics.rectangle("fill", 0, 200 + 32, 1200, 5)
+
+    -- love.graphics.rectangle("fill", 0, 200 + 32, 1200, 5)
 
     for _, ob in ipairs(self.blocks) do
         ob:draw()
     end
 
+
+    love.graphics.setColor(0, 0, 0)
     love.graphics.print(self.info, 350, 300)
 end
 
@@ -140,20 +147,23 @@ end
 
 Block = {}
 
-function Block:init(x, y, w, h)
+function Block:init(x, y)
     local ob = {}
 
     ob.x = x
     ob.y = y
-    ob.w = w
-    ob.h = h
+    ob.w = 32
+    ob.h = 32
+
+    ob.img = love.graphics.newImage("assets/block.png")
 
     self.__index = self
     return setmetatable(ob, self)
 end
 
 function Block:draw()
-    love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
+    -- love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
+    love.graphics.draw(self.img, self.x, self.y)
 end
 
 function Block:update(dt)
