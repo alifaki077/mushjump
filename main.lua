@@ -24,6 +24,9 @@ function Game:init()
 
     ob.bg = love.graphics.newImage("assets/bg.jpg")
 
+    font = love.graphics.newFont("assets/font.ttf", 30)
+    love.graphics.setFont(font)
+
 --    love.window.setIcon(love.graphics.newImage("assets/mush.png"))
 
     self.__index = self
@@ -62,7 +65,7 @@ function Game:draw()
         ob:draw()
     end
 
-    love.graphics.print(self.info, 400, 300)
+    love.graphics.print(self.info, 350, 300)
 end
 
 function Game:update(dt)
@@ -85,9 +88,10 @@ function Game:update(dt)
 end
 
 function Game:keypressed(key)
-    self.pause = false
 
     if key == "space" and self.player.yv == 0 then
+
+        self.pause = false
         self.player.yv = -self.player.oyv
     end
 end
