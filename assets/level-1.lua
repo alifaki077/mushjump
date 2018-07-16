@@ -5,6 +5,6 @@ return {
 		info = "LEVEL 1\nPRESS SPACE TO JUMP.\nAVOID OBSTCALES."
 	},
 	blocks = {
-		{x = 500, y = 200, w = 32, h = 32}
+		{x = 500, y = 200}
 	}
 }
