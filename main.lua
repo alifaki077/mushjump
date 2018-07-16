@@ -7,7 +7,7 @@ function Game:init()
     local ob = {}
 
     -- first level file
-    FILE = "assets/levels/level-1.lua"
+    FILE = "assets/levels/level-8.lua"
 
     self.__index = self
     return setmetatable(ob, self)

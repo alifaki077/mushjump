@@ -2,7 +2,7 @@ return {
 	meta = {
 		_next = "assets/levels/level-4.lua",
 		pause = false,
-		info = "LEVEL 3"
+		info = "LEVEL 3\nTIMING IS CRITICAL."
 	},
 	blocks = {
 		{x = 300, y = 168},
